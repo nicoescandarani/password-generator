@@ -1,0 +1,23 @@
+<div class="configuration-item">
+  <span>Characters Amount</span>
+  <div class="configuration-item__input-wrapper">
+    <input class="range" (input)="setCharactersAmountValue()" [value]="charactersAmount" min="1" max="30" step="1" #range type="range">
+    <p>{{ charactersAmount }}</p>
+  </div>
+</div>
+<div class="configuration-item">
+  <span>Special Characters</span>
+  <input (change)="setSepcialCharactersValue()" [checked]="specialCharacters" type="checkbox" min="1" max="20" step="1">
+</div>
+<div class="configuration-item">
+  <span>Caps</span>
+  <input (change)="setCapsValue()" [checked]="caps" type="checkbox">
+</div>
+<div class="configuration-item">
+  <span>Capitalize</span>
+  <input (change)="setCapitalizeValue()" [checked]="capitalize" type="checkbox">
+</div>
+<div class="configuration-item">
+  <span>Numbers</span>
+  <input (change)="setNumbersValue()" [checked]="numbers" type="checkbox">
+</div>

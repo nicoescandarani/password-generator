@@ -1,8 +1,8 @@
 <div class="configuration-item">
   <span>Characters Amount</span>
   <div class="configuration-item__input-wrapper">
-    <input class="range" (input)="setCharactersAmountValue()" [value]="charactersAmount" min="1" max="30" step="1" #range type="range">
-    <p>{{ charactersAmount }}</p>
+    <input class="range" (input)="setCharactersAmountValue('range')" [value]="charactersAmount" [min]="MIN_CHARACTERS_AMOUNT" [max]="MAX_CHARACTERS_AMOUNT" step="1" #range type="range">
+    <input #input [min]="MIN_CHARACTERS_AMOUNT" [max]="MAX_CHARACTERS_AMOUNT" (change)="setCharactersAmountValue('input')" type="number" [value]="charactersAmount">
   </div>
 </div>
 <div class="configuration-item">

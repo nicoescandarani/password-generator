@@ -9,7 +9,12 @@ import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter, OnDestr
   styleUrls: ['./configuration.component.scss']
 })
 export class ConfigurationComponent implements OnInit, OnDestroy {
+  MAX_CHARACTERS_AMOUNT = 30;
+  MIN_CHARACTERS_AMOUNT = 1;
+
   @ViewChild('range') range: ElementRef | undefined;
+  @ViewChild('input') input: ElementRef | undefined;
+
   @Output() changedConfiguration = new EventEmitter();
 
   configuration$: Observable<Configuration>;
@@ -34,12 +39,11 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  setCharactersAmountValue() {
-    this.service.charactersAmountValue = this.range?.nativeElement.value;
+  setCharactersAmountValue(origin: string) {
+    origin === 'range' ? this.service.charactersAmountValue = this.range?.nativeElement.value : this.service.charactersAmountValue = this.input?.nativeElement.value;
+    if (this.charactersAmount > this.MAX_CHARACTERS_AMOUNT) this.service.charactersAmountValue = this.MAX_CHARACTERS_AMOUNT;
+    if (this.charactersAmount < this.MIN_CHARACTERS_AMOUNT) this.service.charactersAmountValue = this.MIN_CHARACTERS_AMOUNT;
     this.changedConfiguration.emit();
-    if (this.range) {
-      this.range.nativeElement.style.backgroundSize = (1 - 30) * 100 / (30 - 1) + '% 100%';
-    }
   }
 
   setSepcialCharactersValue() {

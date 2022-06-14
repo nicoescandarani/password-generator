@@ -21,3 +21,6 @@
   <span>Numbers</span>
   <input (change)="setNumbersValue()" [checked]="numbers" type="checkbox">
 </div>
+<div class="configuration-item">
+  <button (click)="changedConfiguration.emit()">Generate new</button>
+</div>
